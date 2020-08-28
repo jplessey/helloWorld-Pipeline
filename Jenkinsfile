@@ -8,7 +8,9 @@ pipeline {
         }
         stage('Lint Python files') {
             steps {
-                sh 'pylint --disable=R,C,W1203 *.py'
+                withPythonEnv('python3') {
+                    sh 'pylint --disable=R,C,W1203 *.py'
+                }
             }
         }        
         // stage('Upload to AWS') {
