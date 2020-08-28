@@ -9,6 +9,7 @@ pipeline {
         stage('Lint Python files') {
             steps {
                 withPythonEnv('python3') {
+                    sh 'pip install -r requirements.txt'
                     sh 'pylint --disable=R,C,W1203 *.py'
                 }
             }
