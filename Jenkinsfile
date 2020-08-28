@@ -6,6 +6,11 @@ pipeline {
                 sh 'tidy -q -e *.html'
             }
         }
+        stage('Lint Python files') {
+            steps {
+                sh 'pylint --disable=R,C,W1203 *.py'
+            }
+        }        
         // stage('Upload to AWS') {
         //         steps {
         //         withAWS(region:'us-east-1',credentials:'fc4dee03-749d-4df9-b6b7-d808c9a7b516') {
